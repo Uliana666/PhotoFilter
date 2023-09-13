@@ -14,7 +14,7 @@ struct TYPES {
 };
 
 bool ValidatePassword(const std::string& password) {
-    bool used[TYPES::NUMBER_OF_TYPES + 1];
+    bool used[TYPES::NUMBER_OF_TYPES] = {false};
     if (password.size() < LEN::MIN || password.size() > LEN::MAX) {
         return false;
     }
