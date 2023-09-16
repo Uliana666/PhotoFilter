@@ -1,13 +1,10 @@
 #include "is_leap.h"
 
-const int YEAR_CONST1 = 4;
-const int YEAR_CONST2 = 100;
-const int CONST1_CONST2 = 400;
+constexpr int LEAP_YEAR_DIVISOR = 4;
+constexpr int NON_LEAP_YEAR_DIVISOR = 100;
+constexpr int EXCEPTIONAL_LEAP_YEAR_DIVISOR = 400;
 
 bool IsLeap(int year) {
-    if (year % YEAR_CONST1 == 0 && year % YEAR_CONST2 != 0) {
-        return true;
-    } else {
-        return year % (CONST1_CONST2) == 0;
-    }
+    return (year % LEAP_YEAR_DIVISOR == 0 && year % NON_LEAP_YEAR_DIVISOR != 0) ||
+           (year % (EXCEPTIONAL_LEAP_YEAR_DIVISOR) == 0);
 }
