@@ -30,5 +30,8 @@ bool ValidatePassword(const std::string& password) {
         TYPES type = DetermineType(password[i]);
         used[type] = true;
     }
+    if (used[OUT_OF_RANGE]) {
+        return false;
+    }
     return std::count(std::begin(used), std::end(used), true) >= 3;
 }
