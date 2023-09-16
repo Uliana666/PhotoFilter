@@ -1,40 +1,34 @@
 #include "password.h"
+
 #include <cctype>
+#include <algorithm>
 
-struct LEN {
-    enum : int { MIN = 8, MAX = 14 };
-};
+const int LEN_MIN = 8, LEN_MAX = 14;
+const int CODE_MIN = 33, CODE_MAX = 126;
+enum TYPES: size_t { BIG_LET = 0, SMALL_LET, DIGIT, OTHER, OUT_OF_RANGE, NUMBER_OF_TYPES };
 
-struct CODE {
-    enum : int { MIN = 33, MAX = 126 };
-};
-
-struct TYPES {
-    enum : int { BIG_LET = 0, SMALL_LET, DIGIT, OTHER, NUMBER_OF_TYPES };
-};
+TYPES DetermineType(char symbol) {
+    if (symbol < CODE_MIN || symbol > CODE_MAX) {
+        return OUT_OF_RANGE;
+    }
+    if (isupper(symbol)) {
+        return BIG_LET;
+    } else if (islower(symbol)) {
+        return SMALL_LET;
+    } else if (isdigit(symbol)) {
+        return DIGIT;
+    }
+    return OTHER;
+}
 
 bool ValidatePassword(const std::string& password) {
     bool used[TYPES::NUMBER_OF_TYPES] = {false};
-    if (password.size() < LEN::MIN || password.size() > LEN::MAX) {
+    if (password.size() < LEN_MIN || password.size() > LEN_MAX) {
         return false;
     }
     for (size_t i = 0; i < password.size(); ++i) {
-        if (password[i] < CODE::MIN || password[i] > CODE::MAX) {
-            return false;
-        }
-        if (isupper(password[i])) {
-            used[TYPES::BIG_LET] = true;
-        } else if (islower(password[i])) {
-            used[TYPES::SMALL_LET] = true;
-        } else if (isdigit(password[i])) {
-            used[TYPES::DIGIT] = true;
-        } else {
-            used[TYPES::OTHER] = true;
-        }
+        TYPES type = DetermineType(password[i]);
+        used[type] = true;
     }
-    size_t count = 0;
-    for (size_t i = 0; i < TYPES::NUMBER_OF_TYPES; ++i) {
-        count += used[i];
-    }
-    return count >= 3;
+    return std::count(std::begin(used), std::end(used), true) >= 3;
 }
