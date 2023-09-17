@@ -7,16 +7,14 @@ constexpr size_t LEN_MIN = 8;   // NOLINT
 constexpr size_t LEN_MAX = 14;  // NOLINT
 constexpr int CODE_MIN = 33;    // NOLINT
 constexpr int CODE_MAX = 126;   // NOLINT
-// NOLINTBEGIN
-enum TYPES {
-    BIG_LET,
-    SMALL_LET,
-    DIGIT,
-    OTHER,
-    OUT_OF_RANGE,
-    NUMBER_OF_TYPES
+enum TYPES {                    // NOLINT
+    BIG_LET,                    // NOLINT
+    SMALL_LET,                  // NOLINT
+    DIGIT,                      // NOLINT
+    OTHER,                      // NOLINT
+    OUT_OF_RANGE,               // NOLINT
+    NUMBER_OF_TYPES             // NOLINT
 };
-// NOLINTEND
 
 TYPES DetermineType(char symbol) {
     if (symbol < CODE_MIN || symbol > CODE_MAX) {
