@@ -3,7 +3,9 @@
 #include <cctype>
 #include <algorithm>
 
-const int LEN_MIN = 8, LEN_MAX = 14;
+//NOLINT
+constexpr size_t LEN_MIN = 8;
+constexpr size_t LEN_MAX = 14;
 const int CODE_MIN = 33, CODE_MAX = 126;
 enum TYPES : size_t { BIG_LET = 0, SMALL_LET, DIGIT, OTHER, OUT_OF_RANGE, NUMBER_OF_TYPES };
 
