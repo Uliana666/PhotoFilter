@@ -1,11 +1,8 @@
 #include "is_leap.h"
 
-// NOLINT
-constexpr int LEAP_YEAR_DIVISOR = 4;
-// NOLINT
-constexpr int NON_LEAP_YEAR_DIVISOR = 100;
-// NOLINT
-constexpr int EXCEPTIONAL_LEAP_YEAR_DIVISOR = 400;
+const int LEAP_YEAR_DIVISOR = 4;
+const int NON_LEAP_YEAR_DIVISOR = 100;
+const int EXCEPTIONAL_LEAP_YEAR_DIVISOR = 400;
 
 bool IsLeap(int year) {
     return (year % LEAP_YEAR_DIVISOR == 0 && year % NON_LEAP_YEAR_DIVISOR != 0) ||
