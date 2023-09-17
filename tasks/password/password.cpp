@@ -3,10 +3,10 @@
 #include <cctype>
 #include <algorithm>
 
-constexpr size_t LEN_MIN = 8; // NOLINT
-constexpr size_t LEN_MAX = 14; // NOLINT
-constexpr int CODE_MIN = 33; // NOLINT
-constexpr int CODE_MAX = 126; // NOLINT
+constexpr size_t LEN_MIN = 8;   // NOLINT
+constexpr size_t LEN_MAX = 14;  // NOLINT
+constexpr int CODE_MIN = 33;    // NOLINT
+constexpr int CODE_MAX = 126;   // NOLINT
 enum TYPES {
     BIG_LET,
     SMALL_LET,
