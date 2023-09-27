@@ -7,6 +7,9 @@ struct Date {
     int day = 0;
     int month = 0;
     int year = 0;
+
+    bool operator<(const Date& other) const;
+    bool operator!=(const Date& other) const;
 };
 
 struct Student {
