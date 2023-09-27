@@ -26,3 +26,8 @@ using Events = std::vector<Event>;
 using ScoreTable = std::map<StudentName, std::set<TaskName>>;
 
 ScoreTable GetScoredStudents(const Events& events, time_t score_time);
+
+struct Status{
+    EventType status_merge_request = EventType::MergeRequestClosed;
+    EventType status_last_solve = EventType::CheckFailed;
+};
