@@ -2,6 +2,7 @@
 
 #include <sstream>
 #include <unordered_map>
+#include <unordered_set>
 #include <cmath>
 
 struct CompCaseInsensitive {
@@ -56,13 +57,16 @@ std::vector<std::string_view> Search(std::string_view text, std::string_view que
     std::vector<std::string_view> lines = Split(text, [](char c) { return c == '\n'; });
     size_t m = lines.size();
     for (const auto& line : lines) {
+        std::unordered_set<size_t> check_in;
         std::vector<std::string_view> words_in_str = Split(line, [](char c) { return !isalpha(c); });
         for (const auto& word : words_in_str) {
             if (!num_str.count(word)) {
                 continue;
             }
-            count_docs_with_word[num_str[word]]++;
-            break;
+            check_in.insert(num_str[word]);
+        }
+        for (const auto& num_in : check_in) {
+            count_docs_with_word[num_in]++;
         }
     }
     std::vector<double> price(m);
