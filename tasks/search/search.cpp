@@ -7,7 +7,7 @@
 struct CompCaseInsensitive {
     bool operator()(std::string_view lhs, std::string_view rhs) const {
         return std::equal(lhs.cbegin(), lhs.cend(), rhs.cbegin(),
-                          [](const char lhs, const char rhs) { return std::tolower(lhs) == rhs; });
+                          [](const char lhs, const char rhs) { return std::tolower(lhs) == std::tolower(rhs); });
     }
 };
 
@@ -57,7 +57,7 @@ std::vector<std::string_view> Search(std::string_view text, std::string_view que
             count_docs_with_word[num_str[word]]++;
         }
     }
-    std::vector<long double> price(m);
+    std::vector<double> price(m);
     std::vector<bool> used_line(m);
     for (size_t cur_line = 0; cur_line < m; ++cur_line) {
         std::string_view line = lines[cur_line];
@@ -70,9 +70,8 @@ std::vector<std::string_view> Search(std::string_view text, std::string_view que
             count_word_in_cur_doc[num_str[word]]++;
         }
         for (const auto& [num_word, count] : count_word_in_cur_doc) {
-            price[cur_line] +=
-                static_cast<long double>(count) / static_cast<long double>(words_in_str.size()) *
-                logl(static_cast<long double>(m) / static_cast<long double>(count_docs_with_word[num_word]));
+            price[cur_line] += static_cast<double>(count) / static_cast<double>(words_in_str.size()) *
+                               log(static_cast<double>(m) / static_cast<double>(count_docs_with_word[num_word]));
             used_line[cur_line] = true;
         }
     }
