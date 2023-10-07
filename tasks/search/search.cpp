@@ -1,6 +1,7 @@
 #include "search.h"
 
 #include <sstream>
+#include <unordered_map>
 
 struct CompCaseInsensitive {
     bool operator()(std::string_view lhs, std::string_view rhs) const {
