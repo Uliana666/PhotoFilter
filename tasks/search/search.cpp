@@ -2,6 +2,7 @@
 
 #include <sstream>
 #include <unordered_map>
+#include <cmath>
 
 struct CompCaseInsensitive {
     bool operator()(std::string_view lhs, std::string_view rhs) const {
