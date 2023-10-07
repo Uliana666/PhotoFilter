@@ -6,8 +6,15 @@
 
 struct CompCaseInsensitive {
     bool operator()(std::string_view lhs, std::string_view rhs) const {
-        return std::equal(lhs.cbegin(), lhs.cend(), rhs.cbegin(),
-                          [](const char lhs, const char rhs) { return std::tolower(lhs) == std::tolower(rhs); });
+        if (lhs.size() != rhs.size()) {
+            return false;
+        }
+        for (size_t i = 0; i < lhs.size(); ++i) {
+            if (tolower(lhs[i]) != tolower(rhs[i])) {
+                return false;
+            }
+        }
+        return true;
     }
 };
 
