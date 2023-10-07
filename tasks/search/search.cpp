@@ -62,6 +62,7 @@ std::vector<std::string_view> Search(std::string_view text, std::string_view que
                 continue;
             }
             count_docs_with_word[num_str[word]]++;
+            break;
         }
     }
     std::vector<double> price(m);
