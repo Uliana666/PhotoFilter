@@ -70,8 +70,9 @@ std::vector<std::string_view> Search(std::string_view text, std::string_view que
             count_word_in_cur_doc[num_str[word]]++;
         }
         for (const auto& [num_word, count] : count_word_in_cur_doc) {
-            price[cur_line] += static_cast<long double>(count) / static_cast<long double>(words_in_str.size()) *
-                               logl(static_cast<long double>(m) / static_cast<long double>(count_docs_with_word[num_word]));
+            price[cur_line] +=
+                static_cast<long double>(count) / static_cast<long double>(words_in_str.size()) *
+                logl(static_cast<long double>(m) / static_cast<long double>(count_docs_with_word[num_word]));
             used_line[cur_line] = true;
         }
     }
