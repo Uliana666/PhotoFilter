@@ -19,7 +19,7 @@ struct CompCaseInsensitive {
     }
 };
 
-constexpr size_t HASH_BASE = 31; //NOLINT
+constexpr size_t HASH_BASE = 31;  // NOLINT
 
 struct StrHashCaseInsensitive {
     std::size_t operator()(std::string_view str) const {
