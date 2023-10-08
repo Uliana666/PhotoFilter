@@ -33,9 +33,7 @@ int32_t Stack::Size() const {
 }
 
 void Stack::Clear() {
-    size_ = 0;
     this->~Stack();
-    head_ = nullptr;
 }
 
 bool Stack::Empty() const {
