@@ -55,7 +55,15 @@ Rational& operator--(Rational& ratio) {
 }
 
 std::istream& operator>>(std::istream& is, Rational& ratio) {
-    return is >> ratio.numer_ >> ratio.denom_;
+    std::string str;
+    is >> str;
+    ratio.numer_ = std::stoi(str.substr(0, str.find('/')));
+    if (str.find('/') != str.npos) {
+        ratio.denom_ = std::stoi(str.substr(str.find('/')));
+    } else {
+        ratio.denom_ = 1;
+    }
+    return is;
 }
 
 void Rational::Set(int64_t numer, int64_t denom) {
@@ -140,5 +148,9 @@ bool operator!=(const Rational& lhs, const Rational& rhs) {
 }
 
 std::ostream& operator<<(std::ostream& os, const Rational& ratio) {
-    return os << ratio.GetNumerator() << ' ' << ratio.GetDenominator();
+    os << ratio.GetNumerator();
+    if (ratio.GetDenominator() != 1) {
+        os << '/' << ratio.GetDenominator();
+    }
+    return os;
 }
