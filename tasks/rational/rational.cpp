@@ -57,11 +57,11 @@ Rational& operator--(Rational& ratio) {
 std::istream& operator>>(std::istream& is, Rational& ratio) {
     std::string str;
     is >> str;
-    ratio.numer_ = std::stoi(str.substr(0, str.find('/')));
+    ratio.SetNumerator(std::stoi(str.substr(0, str.find('/'))));
     if (str.find('/') != str.npos) {
-        ratio.denom_ = std::stoi(str.substr(str.find('/')));
+        ratio.SetDenominator(std::stoi(str.substr(str.find('/'))));
     } else {
-        ratio.denom_ = 1;
+        ratio.SetDenominator(1);
     }
     return is;
 }
