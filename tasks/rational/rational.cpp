@@ -59,7 +59,7 @@ std::istream& operator>>(std::istream& is, Rational& ratio) {
     is >> str;
     ratio.SetNumerator(std::stoi(str.substr(0, str.find('/'))));
     if (str.find('/') != str.npos) {
-        ratio.SetDenominator(std::stoi(str.substr(str.find('/'))));
+        ratio.SetDenominator(std::stoi(str.substr(str.find('/') + 1)));
     } else {
         ratio.SetDenominator(1);
     }
