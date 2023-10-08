@@ -64,10 +64,9 @@ std::vector<std::string_view> Search(std::string_view text, std::string_view que
         std::unordered_set<size_t> check_in;
         std::vector<std::string_view> words_in_str = Split(line, [](char c) { return !isalpha(c); });
         for (const auto& word : words_in_str) {
-            if (!num_str.count(word)) {
-                continue;
+            if (num_str.count(word)) {
+                check_in.insert(num_str[word]);
             }
-            check_in.insert(num_str[word]);
         }
         for (const auto& num_in : check_in) {
             count_docs_with_word[num_in]++;
