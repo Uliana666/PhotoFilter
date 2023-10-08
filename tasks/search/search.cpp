@@ -73,8 +73,7 @@ std::vector<std::string_view> Search(std::string_view text, std::string_view que
             count_docs_with_word[num_in]++;
         }
     }
-    std::vector<double> price(m);
-    std::vector<bool> used_line(m);
+    std::vector<double> price(m, 0);
     for (size_t cur_line = 0; cur_line < m; ++cur_line) {
         std::string_view line = lines[cur_line];
         std::vector<std::string_view> words_in_str = Split(line, [](char c) { return !isalpha(c); });
@@ -88,7 +87,6 @@ std::vector<std::string_view> Search(std::string_view text, std::string_view que
         for (const auto& [num_word, count] : count_word_in_cur_doc) {
             price[cur_line] += static_cast<double>(count) / static_cast<double>(words_in_str.size()) *
                                log(static_cast<double>(m) / static_cast<double>(count_docs_with_word[num_word]));
-            used_line[cur_line] = true;
         }
     }
     std::vector<size_t> priority_num_lines(m);
@@ -99,7 +97,7 @@ std::vector<std::string_view> Search(std::string_view text, std::string_view que
                 [&price](size_t a, size_t b) { return price[a] > price[b]; });
     std::vector<std::string_view> result;
     for (size_t i = 0; i < std::min(results_count, m); ++i) {
-        if (!used_line[priority_num_lines[i]]) {
+        if (price[priority_num_lines[i]] == 0) {
             break;
         }
         result.push_back(lines[priority_num_lines[i]]);
