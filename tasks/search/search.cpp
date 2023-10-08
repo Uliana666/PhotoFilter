@@ -1,9 +1,9 @@
 #include "search.h"
 
+#include <ctype.h>
 #include <unordered_map>
 #include <unordered_set>
 #include <cmath>
-#include <ctype.h>
 
 struct CompCaseInsensitive {
     bool operator()(std::string_view lhs, std::string_view rhs) const {
@@ -25,7 +25,7 @@ struct StrHashCaseInsensitive {
     std::size_t operator()(std::string_view str) const {
         size_t hash = 0;
         for (char c : str) {
-            hash = hash * HASH_BASE + static_cast<size_t>(tolower(c));
+            hash = hash * HASH_BASE + static_cast<size_t>(c);
         }
         return hash;
     }
@@ -64,9 +64,10 @@ std::vector<std::string_view> Search(std::string_view text, std::string_view que
         std::unordered_set<size_t> check_in;
         std::vector<std::string_view> words_in_str = Split(line, [](char c) { return !isalpha(c); });
         for (const auto& word : words_in_str) {
-            if (num_str.count(word)) {
-                check_in.insert(num_str[word]);
+            if (!num_str.count(word)) {
+                continue;
             }
+            check_in.insert(num_str[word]);
         }
         for (const auto& num_in : check_in) {
             count_docs_with_word[num_in]++;
