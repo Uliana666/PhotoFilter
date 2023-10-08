@@ -3,6 +3,7 @@
 #include <unordered_map>
 #include <unordered_set>
 #include <cmath>
+#include <ctype.h>
 
 struct CompCaseInsensitive {
     bool operator()(std::string_view lhs, std::string_view rhs) const {
