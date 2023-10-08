@@ -7,11 +7,8 @@ Stack::Stack() : head_(nullptr), size_(0) {
 }
 
 Stack::~Stack() {
-    Node* cur = head_;
-    while (cur != nullptr) {
-        Node* prev = cur->previous;
-        delete cur;
-        cur = prev;
+    while (size_ != 0) {
+        Pop();
     }
 }
 
