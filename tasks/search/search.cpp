@@ -1,6 +1,5 @@
 #include "search.h"
 
-#include <sstream>
 #include <unordered_map>
 #include <unordered_set>
 #include <cmath>
@@ -25,7 +24,7 @@ struct StrHashCaseInsensitive {
     std::size_t operator()(std::string_view str) const {
         size_t hash = 0;
         for (char c : str) {
-            hash = hash * HASH_BASE + static_cast<size_t>(c);
+            hash = hash * HASH_BASE + static_cast<size_t>(tolower(c));
         }
         return hash;
     }
