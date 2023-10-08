@@ -73,7 +73,7 @@ std::vector<std::string_view> Search(std::string_view text, std::string_view que
             count_docs_with_word[num_in]++;
         }
     }
-    std::vector<double> price(m, 0);
+    std::vector<double> price(m);
     for (size_t cur_line = 0; cur_line < m; ++cur_line) {
         std::string_view line = lines[cur_line];
         std::vector<std::string_view> words_in_str = Split(line, [](char c) { return !isalpha(c); });
