@@ -19,11 +19,15 @@ struct CompCaseInsensitive {
     }
 };
 
+constexpr size_t HASH_BASE = 31; //NOLINT
+
 struct StrHashCaseInsensitive {
     std::size_t operator()(std::string_view str) const {
-        std::string copy_str = {str.begin(), str.end()};
-        std::transform(copy_str.begin(), copy_str.end(), copy_str.begin(), tolower);
-        return std::hash<std::string>{}(copy_str);
+        size_t hash = 0;
+        for (char c : str) {
+            hash = hash * HASH_BASE + static_cast<size_t>(c);
+        }
+        return hash;
     }
 };
 
