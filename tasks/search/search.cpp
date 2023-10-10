@@ -1,9 +1,9 @@
 #include "search.h"
 
+#include <cmath>
 #include <ctype.h>
 #include <unordered_map>
 #include <unordered_set>
-#include <cmath>
 
 struct CompCaseInsensitive {
     bool operator()(std::string_view lhs, std::string_view rhs) const {
