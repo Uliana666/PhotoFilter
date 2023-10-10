@@ -6,17 +6,8 @@ Rational::Rational() : numer_(0), denom_(1) {
 Rational::Rational(int value) : numer_(value), denom_(1) {  // NOLINT
 }
 
-Rational::Rational(int numer, int denom) : numer_(numer), denom_(denom) {
-    if (denom_ == 0) {
-        throw RationalDivisionByZero{};
-    }
-    if (denom_ < 0) {
-        denom_ *= -1;
-        numer_ *= -1;
-    }
-    int gcd_numer_denom = std::gcd(abs(numer_), denom_);
-    numer_ /= gcd_numer_denom;
-    denom_ /= gcd_numer_denom;
+Rational::Rational(int numer, int denom) {
+    Set(numer, denom);
 }
 
 int Rational::GetNumerator() const {
@@ -78,7 +69,7 @@ void Rational::Set(int64_t numer, int64_t denom) {
         denom *= -1;
         numer *= -1;
     }
-    int64_t gcd_numer_denom = std::gcd(abs(numer), denom);
+    int64_t gcd_numer_denom = std::gcd(std::abs(numer), denom);
     numer /= gcd_numer_denom;
     denom /= gcd_numer_denom;
     numer_ = static_cast<int>(numer);
