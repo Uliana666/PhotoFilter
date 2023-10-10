@@ -36,11 +36,15 @@ void Rational::SetDenominator(int value) {
 }
 
 Rational& operator+=(Rational& lhs, const Rational& rhs) {
-    lhs = lhs + rhs;
+    int64_t numer = lhs.GetNumerator() * rhs.GetDenominator() + rhs.GetNumerator() * lhs.GetDenominator();
+    int64_t denom = lhs.GetDenominator() * rhs.GetDenominator();
+    lhs.Set(numer, denom);
     return lhs;
 }
 Rational& operator*=(Rational& lhs, const Rational& rhs) {
-    lhs = lhs * rhs;
+    int64_t numer = lhs.GetNumerator() * rhs.GetNumerator();
+    int64_t denom = lhs.GetDenominator() * rhs.GetDenominator();
+    lhs.Set(numer, denom);
     return lhs;
 }
 
@@ -67,6 +71,18 @@ std::istream& operator>>(std::istream& is, Rational& ratio) {
 }
 
 void Rational::Set(int64_t numer, int64_t denom) {
+    if (denom == 0) {
+        throw RationalDivisionByZero{};
+    }
+    if (denom < 0) {
+        denom *= -1;
+        numer *= -1;
+    }
+    int64_t gcd_numer_denom = std::gcd(abs(numer), denom);
+    numer /= gcd_numer_denom;
+    denom /= gcd_numer_denom;
+    numer_ = static_cast<int>(numer);
+    denom_ = static_cast<int>(denom);
 }
 
 Rational operator+(const Rational& ratio) {
@@ -78,37 +94,33 @@ Rational operator-(const Rational& ratio) {
 }
 
 Rational& operator-=(Rational& lhs, const Rational& rhs) {
-    lhs = lhs - rhs;
+    lhs += -rhs;
     return lhs;
 }
 
 Rational& operator/=(Rational& lhs, const Rational& rhs) {
-    lhs = lhs / rhs;
+    lhs *= Rational(rhs.GetDenominator(), rhs.GetNumerator());
     return lhs;
 }
 
 Rational operator+(const Rational& lhs, const Rational& rhs) {
-    int numer = lhs.GetNumerator() * rhs.GetDenominator() + rhs.GetNumerator() * lhs.GetDenominator();
-    int denom = lhs.GetDenominator() * rhs.GetDenominator();
-    return Rational(numer, denom);
+    Rational res = lhs;
+    return res += rhs;
 }
 
 Rational operator-(const Rational& lhs, const Rational& rhs) {
-    int numer = lhs.GetNumerator() * rhs.GetDenominator() - rhs.GetNumerator() * lhs.GetDenominator();
-    int denom = lhs.GetDenominator() * rhs.GetDenominator();
-    return Rational(numer, denom);
+    Rational res = lhs;
+    return res -= rhs;
 }
 
 Rational operator*(const Rational& lhs, const Rational& rhs) {
-    int numer = lhs.GetNumerator() * rhs.GetNumerator();
-    int denom = lhs.GetDenominator() * rhs.GetDenominator();
-    return Rational(numer, denom);
+    Rational res = lhs;
+    return res *= rhs;
 }
 
 Rational operator/(const Rational& lhs, const Rational& rhs) {
-    int numer = lhs.GetNumerator() * rhs.GetDenominator();
-    int denom = lhs.GetDenominator() * rhs.GetNumerator();
-    return Rational(numer, denom);
+    Rational res = lhs;
+    return res /= rhs;
 }
 
 Rational operator++(Rational& ratio, int) {
