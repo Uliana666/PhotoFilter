@@ -1,6 +1,7 @@
 #pragma once
 
 #include <limits>
+#include <cstdint>
 
 class ColorRGB {
     float r_, g_, b_;

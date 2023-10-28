@@ -2,6 +2,7 @@
 
 #include <cstdio>
 #include <vector>
+#include <exception>
 
 #include "../color/color_rgb.h"
 
@@ -25,9 +26,8 @@ public:
         std::vector<std::vector<ColorRGB>> res(n, std::vector<ColorRGB>(m));
         for (size_t i = 0; i < n; ++i) {
             for (size_t j = 0; j < m; ++j) {
-                res[i][j] =
-                         ColorRGB(static_cast<uint8_t>(gen() % 256), static_cast<uint8_t>(gen() % 256),
-                                  static_cast<uint8_t>(gen() % 256));
+                res[i][j] = ColorRGB(static_cast<uint8_t>(gen() % 256), static_cast<uint8_t>(gen() % 256),
+                                     static_cast<uint8_t>(gen() % 256));
             }
         }
         SetImage(res);
