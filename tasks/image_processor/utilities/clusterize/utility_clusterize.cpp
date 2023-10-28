@@ -38,7 +38,6 @@ std::vector<size_t> utility::clusterize::FindForPointsCentroid(const std::vector
                 num = num_centroid;
             }
         }
-        assert(num != -1);
         res[num_point] = num;
     }
     return res;
