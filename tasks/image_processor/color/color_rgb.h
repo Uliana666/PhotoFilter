@@ -6,7 +6,7 @@ class ColorRGB {
     float r_, g_, b_;
 
 public:
-    static constexpr uint8_t MaxColor = std::numeric_limits<uint8_t>::max();
+    static const uint8_t MaxColor = std::numeric_limits<uint8_t>::max(); // constexpr doesn't work
 
     ColorRGB();
     ColorRGB(float r, float g, float b);
