@@ -2,7 +2,7 @@
 
 #include <cstdio>
 #include <vector>
-#include <exception>
+#include <stdexcept>
 
 #include "../color/color_rgb.h"
 
