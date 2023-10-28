@@ -21,6 +21,7 @@ struct BMPFileHeader {
     void Load(std::istream& file);
     void Save(std::ostream& file);
 };
+
 #define FIELD(type, name) type name;
 
 struct BMPInfoHeader {
@@ -32,4 +33,3 @@ struct BMPInfoHeader {
     void Load(std::istream& file);
     void Save(std::ostream& file);
 };
-
