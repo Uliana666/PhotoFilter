@@ -1,3 +1,5 @@
+#include <cstring>
+
 #include "cluster.h"
 #include "../../utilities/clusterize/utility_clusterize.h"
 

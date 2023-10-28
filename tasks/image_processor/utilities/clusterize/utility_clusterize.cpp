@@ -4,6 +4,7 @@
 #include <vector>
 #include <random>
 #include <algorithm>
+#include <cstdlib>
 
 Point::Point() : x(0), y(0), z(0) {
 }
@@ -20,7 +21,7 @@ bool Point::operator==(const Point& other) const {
 }
 
 bool Point::EqualWithEps(const Point& other, float eps) const {
-    return abs(x - other.x) <= eps && abs(y - other.y) <= eps && (z - other.z) <= eps;
+    return fabs(x - other.x) <= eps && fabs(y - other.y) <= eps && (z - other.z) <= eps;
 }
 
 std::vector<size_t> utility::clusterize::FindForPointsCentroid(const std::vector<Point>& centroids,
