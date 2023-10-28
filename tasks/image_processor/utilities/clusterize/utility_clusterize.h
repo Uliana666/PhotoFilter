@@ -22,6 +22,8 @@ public:
 
 namespace utility::clusterize {
 
+constexpr float Eps = 0.000001;
+
 std::vector<size_t> FindForPointsCentroid(const std::vector<Point>& centroids, const std::vector<Point>& points);
 
 Point FindCentroid(const std::vector<Point>& points);

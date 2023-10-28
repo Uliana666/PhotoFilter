@@ -27,7 +27,7 @@ void BmpImageParser::Load(Image& image, std::istream& in) const {
     }
     std::vector<uint8_t> image_buffer(file_header.fileSize - file_header.dataOffset);
 
-    in.read(reinterpret_cast<char*>(image_buffer.data()), image_buffer.size());
+    in.read(reinterpret_cast<char*>(image_buffer.data()), static_cast<int64_t>(image_buffer.size()));
     if (!in.good() || in.eof()) {
         throw std::runtime_error("Bad istream");
     }

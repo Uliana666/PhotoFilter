@@ -86,7 +86,7 @@ std::pair<std::vector<Point>, std::vector<size_t>> utility::clusterize::FindClus
                 }
             } else {
                 Point mid = FindCentroid(clusters[i]);
-                if (!mid.EqualWithEps(centroids[i], 0.000001)) {
+                if (!mid.EqualWithEps(centroids[i], Eps)) {
                     centroids[i] = mid;
                     changes = true;
                 }
