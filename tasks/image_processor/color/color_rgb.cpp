@@ -68,6 +68,6 @@ bool ColorRGB::operator==(const ColorRGB& other) const {
     return r_ == other.r_ && g_ == other.g_ && b_ == other.b_;
 }
 
-bool ColorRGB::EqualWithEps(const ColorRGB& other, float Eps) const {
-    return fabs(r_ - other.r_) <= Eps && fabs(g_ - other.g_) <= Eps && fabs(b_ - other.b_) <= Eps;
+bool ColorRGB::EqualWithEps(const ColorRGB& other, float eps) const {
+    return fabs(r_ - other.r_) <= eps && fabs(g_ - other.g_) <= eps && fabs(b_ - other.b_) <= eps;
 }

@@ -31,5 +31,5 @@ public:
 
     bool operator==(const ColorRGB& other) const;
 
-    bool EqualWithEps(const ColorRGB& other, float Eps) const;
+    bool EqualWithEps(const ColorRGB& other, float eps) const;
 };

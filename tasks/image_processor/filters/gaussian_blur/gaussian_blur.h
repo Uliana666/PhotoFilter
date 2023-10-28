@@ -5,7 +5,7 @@
 
 class GaussianBlur : public ConsoleFilterInterface {
     float sigma_;
-    int32_t size_gauss_ = 37;
+    static constexpr int32_t SizeGauss = 37;
 
 public:
     GaussianBlur();
@@ -13,8 +13,6 @@ public:
     void Apply(Image& image) const override;
 
     const char* const* ConsumeArgs(const char* const* args) override;
-
-    void SetSize(int32_t size);
 
     ~GaussianBlur() override = default;
 

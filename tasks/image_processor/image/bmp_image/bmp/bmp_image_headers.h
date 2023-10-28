@@ -15,7 +15,7 @@ static constexpr size_t SignatureBmp = 0x4D42;
 struct BMPFileHeader {
 #include "fields_of_bmp_file_header.def"
 
-    BMPFileHeader(size_t size_data);
+    explicit BMPFileHeader(size_t size_data);
     BMPFileHeader() = default;
 
     void Load(std::istream& file);
@@ -27,7 +27,7 @@ struct BMPFileHeader {
 struct BMPInfoHeader {
 #include "fields_of_bmp_info.def"
 
-    BMPInfoHeader(const Image& image);
+    explicit BMPInfoHeader(const Image& image);
     BMPInfoHeader() = default;
 
     void Load(std::istream& file);
