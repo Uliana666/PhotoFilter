@@ -226,7 +226,7 @@ TEST_CASE("Test TransposeMatrix, Correct data") {
     };
     for (size_t i = 0; i < 6; ++i) {
         for (size_t j = 0; j < 2; ++j) {
-            REQUIRE(abs(data[i][j] - ans[i][j]) <= 0.001);
+            REQUIRE(fabs(data[i][j] - ans[i][j]) <= 0.001);
         }
     }
 }
@@ -260,7 +260,7 @@ TEST_CASE("Test Normalize") {
     };
     for (size_t i = 0; i < 2; ++i) {
         for (size_t j = 0; j < data[i].size(); ++j) {
-            REQUIRE(abs(data[i][j] - ans[i][j]) <= 0.001);
+            REQUIRE(fabs(data[i][j] - ans[i][j]) <= 0.001);
         }
     }
     std::vector<std::vector<float>> a, b(3), c = {{1, 3, -1}, {-3}};

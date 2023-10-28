@@ -40,5 +40,5 @@ public:
     void SetPixel(size_t x, size_t y, ColorRGB c);
     ColorRGB GetPixel(size_t x, size_t y) const;
 
-    bool EqualWithEps(const Image& other, float Eps) const;
+    bool EqualWithEps(const Image& other, float eps) const;
 };

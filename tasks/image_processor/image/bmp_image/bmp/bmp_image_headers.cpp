@@ -9,7 +9,7 @@ BMPInfoHeader::BMPInfoHeader(const Image& image) {
     width = image.Width();
     height = image.Height();
     planes = 1;
-    bitsPerPixel = bmp::CountBytes * 8;
+    bitsPerPixel = bmp::CountBytes * bmp::CountBitInBytes;
     compression = 0;
     dataSize = 0;
     horizontalResolution = 0;

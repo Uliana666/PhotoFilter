@@ -20,7 +20,7 @@ void BmpImageParser::Load(Image& image, std::istream& in) const {
         throw std::invalid_argument("File is not bmp_file");
     }
 
-    if (info_header.bitsPerPixel != bmp::CountBytes * 8 || info_header.compression != 0) {
+    if (info_header.bitsPerPixel != bmp::CountBytes * bmp::CountBitInBytes || info_header.compression != 0) {
         throw std::invalid_argument("This class only supports 24-bit uncompressed BMP images\nbitCount: " +
                                     std::to_string(info_header.bitsPerPixel) +
                                     "\ncompression: " + std::to_string(info_header.compression));
@@ -41,7 +41,7 @@ void BmpImageSaver::Save(const Image& image, std::ostream& out) const {
 
     file_header.Save(out);
     info_header.Save(out);
-    out.write(reinterpret_cast<char*>(image_buffer.data()), image_buffer.size());
+    out.write(reinterpret_cast<char*>(image_buffer.data()), static_cast<int64_t>(image_buffer.size()));
 
     if (!out.good()) {
         throw std::runtime_error("Bad ostream");

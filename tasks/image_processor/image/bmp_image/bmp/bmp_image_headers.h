@@ -5,6 +5,7 @@
 
 namespace bmp {
 static constexpr size_t CountBytes = 3;
+static constexpr size_t CountBitInBytes = 8;
 static constexpr size_t SizeOfHeaderFile = 14;
 static constexpr size_t SizeOfHeaderInfo = 40;
 static constexpr size_t SignatureBmp = 0x4D42;

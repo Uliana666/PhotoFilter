@@ -5,13 +5,13 @@
 #include "../../utilities/convolution/utility_convolution.h"
 
 void GaussianBlur::Apply(Image& image) const {
-    float distribution = 2.f * M_PI * sigma_ * sigma_;
+    float distribution = static_cast<float>(2 * M_PI * sigma_ * sigma_);
     std::vector<std::vector<float>> gauss_matrix(1, std::vector<float>(SizeGauss));
     float size_mid = static_cast<float>(SizeGauss - 1) / 2;
     for (int32_t x = 0; x < SizeGauss; ++x) {
         float x0 = static_cast<float>(x);
         float power = ((x0 - size_mid) * (x0 - size_mid)) / (2 * sigma_ * sigma_);
-        gauss_matrix[0][x] = 1.f / distribution * exp(-power);
+        gauss_matrix[0][x] = static_cast<float>(1 / distribution * exp(-power));
     }
     try {
         utility::convolution::Normalize(gauss_matrix);

@@ -36,10 +36,10 @@ ColorRGB Image::GetPixel(size_t x, size_t y) const {
 
 void Image::SetImage(const std::vector<std::vector<ColorRGB>>& data) {
     data_ = data;
-    h_ = data_.size();
+    h_ = static_cast<int32_t>(data_.size());
     w_ = 0;
     if (!data.empty()) {
-        w_ = data[0].size();
+        w_ = static_cast<int32_t>(data[0].size());
     }
 }
 
@@ -51,13 +51,13 @@ Image::Image(const std::vector<std::vector<ColorRGB>>& data) {
     SetImage(data);
 }
 
-bool Image::EqualWithEps(const Image& other, float Eps) const {
+bool Image::EqualWithEps(const Image& other, float eps) const {
     if (Width() != other.Width() || Height() != other.Height()) {
         return false;
     }
     for (size_t i = 0; i < Height(); ++i) {
         for (size_t j = 0; j < Width(); ++j) {
-            if (!GetPixel(i, j).EqualWithEps(other.GetPixel(i, j), Eps)) {
+            if (!GetPixel(i, j).EqualWithEps(other.GetPixel(i, j), eps)) {
                 return false;
             }
         }

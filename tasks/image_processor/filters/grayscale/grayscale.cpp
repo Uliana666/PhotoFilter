@@ -2,8 +2,9 @@
 #include "../../utilities/convolution/utility_convolution.h"
 
 void Grayscale::Apply(Image& image) const {
-    utility::convolution::ApplyFunction(
-        image, [](ColorRGB c) { return ColorRGB(c.GetR() * 0.299f + c.GetG() * 0.587f + c.GetB() * 0.114f); });
+    utility::convolution::ApplyFunction(image, [](ColorRGB c) {
+        return ColorRGB(c.GetR() * 0.299f + c.GetG() * 0.587f + c.GetB() * 0.114f); // NOLINT
+    });
 }
 
 const char* const* Grayscale::ConsumeArgs(const char* const* args) {
