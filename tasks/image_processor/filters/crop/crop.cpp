@@ -1,3 +1,5 @@
+#include <cstring>
+
 #include "crop.h"
 
 void Crop::Apply(Image& image) const {

@@ -1,5 +1,7 @@
 #pragma once
 
+#include <cstring>
+
 #include "../../image/image.h"
 #include "../filter_interface.h"
 

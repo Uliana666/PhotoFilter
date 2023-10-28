@@ -1,5 +1,6 @@
 #include <limits>
 #include <cmath>
+#include <cstdlib>
 
 #include "color_rgb.h"
 
@@ -68,5 +69,5 @@ bool ColorRGB::operator==(const ColorRGB& other) const {
 }
 
 bool ColorRGB::EqualWithEps(const ColorRGB& other, float Eps) const {
-    return abs(r_ - other.r_) <= Eps && abs(g_ - other.g_) <= Eps && abs(b_ - other.b_) <= Eps;
+    return fabs(r_ - other.r_) <= Eps && fabs(g_ - other.g_) <= Eps && fabs(b_ - other.b_) <= Eps;
 }
