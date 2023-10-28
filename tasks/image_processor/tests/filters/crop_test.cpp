@@ -3,6 +3,7 @@
 #include "filters/crop/crop.h"
 #include "../help_func.h"
 
+// NOLINTBEGIN
 TEST_CASE("Crop Check Consume Arguments Correct") {
     Crop filter;
     Console console;
@@ -59,3 +60,4 @@ TEST_CASE("Crop Check Apply") {
         }
     }
 }
+// NOLINTEND

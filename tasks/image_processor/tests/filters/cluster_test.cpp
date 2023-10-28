@@ -3,6 +3,7 @@
 #include "filters/cluster/cluster.h"
 #include "../help_func.h"
 
+// NOLINTBEGIN
 TEST_CASE("Cluster Check Consume Arguments Correct") {
     Cluster filter;
     const char* const* ptr;
@@ -31,3 +32,4 @@ TEST_CASE("Cluster Check Consume Arguments Incorrect") {
     std::vector<std::string> e = {};
     REQUIRE_THROWS(filter.ConsumeArgs(console.GetStr(e)));
 }
+// NOLINTEND

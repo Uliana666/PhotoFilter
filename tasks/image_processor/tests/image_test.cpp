@@ -2,6 +2,7 @@
 
 #include "../image/image.h"
 
+// NOLINTBEGIN
 TEST_CASE("Image Correct Data") {
     Image image;
     std::vector<std::vector<ColorRGB>> data(10, std::vector<ColorRGB>(20, ColorRGB(0.f)));
@@ -29,3 +30,4 @@ TEST_CASE("Image InCorrect Data") {
     REQUIRE_THROWS(image.GetPixel(-10, 9));
     REQUIRE_THROWS(image.GetPixel(9, 100));
 }
+// NOLINTEND

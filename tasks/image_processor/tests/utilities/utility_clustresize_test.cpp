@@ -2,6 +2,7 @@
 
 #include "utilities/clusterize/utility_clusterize.h"
 
+// NOLINTBEGIN
 TEST_CASE("Custerize Simple test, k = 1") {
     std::vector<Point> points = {Point(0.1, 0.5, 0),    Point(0.105, 0.51, 0), Point(0.1, 0.515, 0),
                                  Point(0.102, 0.48, 0), Point(0.5, 0.5, 0),    Point(0.48, 0.52, 0)};
@@ -38,3 +39,4 @@ TEST_CASE("Clusterize Different data smaller than k, k = 100") {
         REQUIRE(cluster[type[i]].EqualWithEps(points[i], 0.001));
     }
 }
+// NOLINTEND

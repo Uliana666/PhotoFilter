@@ -3,6 +3,7 @@
 #include "filters/gaussian_blur/gaussian_blur.h"
 #include "../help_func.h"
 
+// NOLINTBEGIN
 TEST_CASE("Gaussian Blur Check Consume Arguments Correct") {
     GaussianBlur filter;
     const char* const* ptr;
@@ -25,3 +26,4 @@ TEST_CASE("Gaussian Blur Check Consume Arguments Incorrect") {
     std::vector<std::string> d = {};
     REQUIRE_THROWS(filter.ConsumeArgs(console.GetStr(d)));
 }
+// NOLINTEND

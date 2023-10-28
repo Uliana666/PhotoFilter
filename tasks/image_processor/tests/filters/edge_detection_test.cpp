@@ -3,6 +3,7 @@
 #include "filters/edge_detection/edge_detection.h"
 #include "../help_func.h"
 
+// NOLINTBEGIN
 TEST_CASE("Edge Detection Check Consume Arguments Correct") {
     EdgeDetection filter;
     const char* const* ptr;
@@ -31,3 +32,4 @@ TEST_CASE("Edge Detection Check Consume Arguments Incorrect") {
     std::vector<std::string> e = {};
     REQUIRE_THROWS(filter.ConsumeArgs(console.GetStr(e)));
 }
+// NOLINTEND

@@ -4,6 +4,7 @@
 #include "image/bmp_image/bmp/bmp_image_headers.h"
 #include <sstream>
 
+// NOLINTBEGIN
 TEST_CASE("Test Correct data 2 * 2") {
     std::mt19937 gen;
     int32_t n = 2;
@@ -100,3 +101,4 @@ TEST_CASE("Test FromPath") {
         }
     }
 }
+// NOLINTEND

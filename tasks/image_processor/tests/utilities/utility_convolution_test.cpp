@@ -3,6 +3,7 @@
 #include "utilities/convolution/utility_convolution.h"
 #include <iostream>
 
+// NOLINTBEGIN
 TEST_CASE("Test ApplyMatrixFilter, Correct small data") {
     std::mt19937 gen;
     Image image;
@@ -267,3 +268,4 @@ TEST_CASE("Test Normalize") {
     REQUIRE_THROWS(utility::convolution::Normalize(b));
     REQUIRE_THROWS(utility::convolution::Normalize(c));
 }
+// NOLINTEND
