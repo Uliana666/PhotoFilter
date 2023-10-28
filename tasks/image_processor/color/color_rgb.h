@@ -1,12 +1,12 @@
 #pragma once
 
-#include <cstdint>
+#include <limits>
 
 class ColorRGB {
     float r_, g_, b_;
 
 public:
-    static const uint8_t MaxColor = std::numeric_limits<uint8_t>::max(); // constexpr doesn't work
+    static constexpr uint8_t MaxColor = std::numeric_limits<uint8_t>::max();
 
     ColorRGB();
     ColorRGB(float r, float g, float b);

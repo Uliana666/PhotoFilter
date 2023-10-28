@@ -1,4 +1,5 @@
 #include <cmath>
+#include <cstring>
 
 #include "gaussian_blur.h"
 #include "../../utilities/convolution/utility_convolution.h"
