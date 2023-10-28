@@ -1,4 +1,9 @@
 add_executable(
-    image_processor
-    image_processor.cpp
-)
+        image_processor
+        image_processor.cpp
+        image/image.cpp image/image.h image/bmp_image/bmp_image_parser.cpp image/bmp_image/bmp_image_parser.h color/color_rgb.cpp color/color_rgb.h filters/crop/crop.cpp filters/crop/crop.h filters/filter_interface.h image/bmp_image/bmp/bmp_image_headers.cpp image/bmp_image/bmp/bmp_image_headers.h filters/grayscale/grayscale.cpp filters/grayscale/grayscale.h filters/negative/negative.cpp filters/negative/negative.h filters/sharpening/sharpening.cpp filters/sharpening/sharpening.h filters/edge_detection/edge_detection.cpp filters/edge_detection/edge_detection.h filters/gaussian_blur/gaussian_blur.cpp filters/gaussian_blur/gaussian_blur.h utilities/convolution/utility_convolution.cpp utilities/convolution/utility_convolution.h filters/cluster/cluster.cpp filters/cluster/cluster.h utilities/clusterize/utility_clusterize.h utilities/clusterize/utility_clusterize.cpp)
+add_catch(test_image_processor tests/help_func.cpp tests/help_func.h tests/filters/gaussian_blur_test.cpp tests/filters/edge_detection_test.cpp tests/filters/crop_test.cpp tests/filters/cluster_test.cpp tests/bmp/bmp_image_test.cpp tests/image_test.cpp tests/utilities/utility_convolution_test.cpp tests/utilities/utility_clustresize_test.cpp image/image.cpp image/image.h image/bmp_image/bmp_image_parser.cpp image/bmp_image/bmp_image_parser.h color/color_rgb.cpp color/color_rgb.h filters/crop/crop.cpp filters/crop/crop.h filters/filter_interface.h image/bmp_image/bmp/bmp_image_headers.cpp image/bmp_image/bmp/bmp_image_headers.h filters/grayscale/grayscale.cpp filters/grayscale/grayscale.h filters/negative/negative.cpp filters/negative/negative.h filters/sharpening/sharpening.cpp filters/sharpening/sharpening.h filters/edge_detection/edge_detection.cpp filters/edge_detection/edge_detection.h filters/gaussian_blur/gaussian_blur.cpp filters/gaussian_blur/gaussian_blur.h utilities/convolution/utility_convolution.cpp utilities/convolution/utility_convolution.h filters/cluster/cluster.cpp filters/cluster/cluster.h utilities/clusterize/utility_clusterize.h utilities/clusterize/utility_clusterize.cpp)
+
+
+
+

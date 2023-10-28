@@ -1,0 +1,12 @@
+FIELD(uint32_t, headerSize)
+FIELD(int32_t, width)
+FIELD(int32_t, height)
+FIELD(uint16_t, planes)
+FIELD(uint16_t, bitsPerPixel)
+FIELD(uint32_t, compression)
+FIELD(uint32_t, dataSize)
+FIELD(int32_t, horizontalResolution)
+FIELD(int32_t, verticalResolution)
+FIELD(uint32_t, colors)
+FIELD(uint32_t, importantColors)
+#undef FIELD

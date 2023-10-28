@@ -1,0 +1,6 @@
+FIELD(uint16_t, signature)
+FIELD(uint32_t, fileSize)
+FIELD(uint16_t, reserved1)
+FIELD(uint16_t, reserved2)
+FIELD(uint32_t, dataOffset)
+#undef FIELD
