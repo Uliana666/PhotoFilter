@@ -27,21 +27,21 @@ BMPFileHeader::BMPFileHeader(size_t size_data) {
 }
 
 void BMPFileHeader::Load(std::istream& file) {
-    #define FIELD(type, name) file.read(reinterpret_cast<char*>(&name), sizeof(type));
-    #include "fields_of_bmp_file_header.def"
+#define FIELD(type, name) file.read(reinterpret_cast<char*>(&name), sizeof(type));
+#include "fields_of_bmp_file_header.def"
 }
 
 void BMPFileHeader::Save(std::ostream& file) {
-    #define FIELD(type, name) file.write(reinterpret_cast<char*>(&name), sizeof(type));
-    #include "fields_of_bmp_file_header.def"  // NOLINT(readability-duplicate-include)
+#define FIELD(type, name) file.write(reinterpret_cast<char*>(&name), sizeof(type));
+#include "fields_of_bmp_file_header.def"  // NOLINT(readability-duplicate-include)
 }
 
 void BMPInfoHeader::Load(std::istream& file) {
-    #define FIELD(type, name) file.read(reinterpret_cast<char*>(&name), sizeof(type));
-    #include "fields_of_bmp_info.def"
+#define FIELD(type, name) file.read(reinterpret_cast<char*>(&name), sizeof(type));
+#include "fields_of_bmp_info.def"
 }
 
 void BMPInfoHeader::Save(std::ostream& file) {
-    #define FIELD(type, name) file.write(reinterpret_cast<char*>(&name), sizeof(type));
-    #include "fields_of_bmp_info.def"  // NOLINT(readability-duplicate-include)
+#define FIELD(type, name) file.write(reinterpret_cast<char*>(&name), sizeof(type));
+#include "fields_of_bmp_info.def"  // NOLINT(readability-duplicate-include)
 }

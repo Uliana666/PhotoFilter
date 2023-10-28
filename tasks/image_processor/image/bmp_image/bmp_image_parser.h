@@ -21,5 +21,4 @@ public:
     void Save(const Image& image, std::ostream& out) const;
 
     void SaveFromPath(Image& image, const std::string& path) const;
-
 };

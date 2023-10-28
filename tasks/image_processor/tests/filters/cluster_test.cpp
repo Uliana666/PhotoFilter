@@ -31,4 +31,3 @@ TEST_CASE("Cluster Check Consume Arguments Incorrect") {
     std::vector<std::string> e = {};
     REQUIRE_THROWS(filter.ConsumeArgs(console.GetStr(e)));
 }
-

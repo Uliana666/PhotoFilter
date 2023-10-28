@@ -87,7 +87,7 @@ std::vector<uint8_t> BmpImageSaver::ConvertImageToRawData(const Image& image) co
 
 void BmpImageParser::LoadFromPath(Image& image, const std::string& path) const {
     std::ifstream file(path, std::ios::binary);
-    if (!file.is_open()){
+    if (!file.is_open()) {
         throw std::runtime_error("Error opening file");
     }
     try {
@@ -100,7 +100,7 @@ void BmpImageParser::LoadFromPath(Image& image, const std::string& path) const {
 
 void BmpImageSaver::SaveFromPath(Image& image, const std::string& path) const {
     std::ofstream file(path, std::ios::binary);
-    if (!file.is_open()){
+    if (!file.is_open()) {
         throw std::runtime_error("Error opening file");
     }
     try {

@@ -25,4 +25,3 @@ TEST_CASE("Gaussian Blur Check Consume Arguments Incorrect") {
     std::vector<std::string> d = {};
     REQUIRE_THROWS(filter.ConsumeArgs(console.GetStr(d)));
 }
-
