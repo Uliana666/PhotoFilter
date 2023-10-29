@@ -4164,7 +4164,7 @@ namespace Generators {
         {
             if (!m_predicate(m_generator.get())) {
                 // It might happen that there are no values that pass the
-                // filter_interface. In that case we throw an exception.
+                // filter. In that case we throw an exception.
                 auto has_initial_value = next();
                 if (!has_initial_value) {
                     Catch::throw_exception(GeneratorException("No valid value found in filtered generator"));
@@ -9949,7 +9949,7 @@ namespace Catch {
     :   m_data( data ),
         m_stream( openStream() )
     {
-        // We need to trim filter_interface specs to avoid trouble with superfluous
+        // We need to trim filter specs to avoid trouble with superfluous
         // whitespace (esp. important for bdd macros, as those are manually
         // aligned with whitespace).
 
@@ -14550,7 +14550,7 @@ namespace TestCaseTracking {
         if( !filters.empty() ) {
             m_filters.reserve( m_filters.size() + filters.size() + 2 );
             m_filters.emplace_back(""); // Root - should never be consulted
-            m_filters.emplace_back(""); // Test Case - not a section filter_interface
+            m_filters.emplace_back(""); // Test Case - not a section filter
             m_filters.insert( m_filters.end(), filters.begin(), filters.end() );
         }
     }
@@ -16471,7 +16471,7 @@ void ConsoleReporter::noMatchingTestCases(std::string const& spec) {
 }
 
 void ConsoleReporter::reportInvalidArguments(std::string const&arg){
-    stream << "Invalid filters: " << arg << std::endl;
+    stream << "Invalid Filter: " << arg << std::endl;
 }
 
 void ConsoleReporter::assertionStarting(AssertionInfo const&) {}
@@ -16773,7 +16773,7 @@ void ConsoleReporter::printSummaryDivider() {
 void ConsoleReporter::printTestFilters() {
     if (m_config->testSpec().hasFilters()) {
         Colour guard(Colour::BrightYellow);
-        stream << "filters: " << serializeFilters(m_config->getTestsOrTags()) << '\n';
+        stream << "Filters: " << serializeFilters(m_config->getTestsOrTags()) << '\n';
     }
 }
 
